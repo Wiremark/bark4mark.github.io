@@ -18,4 +18,5 @@ function onCreate(){
 
   game.physics.startSystem(Phaser.Physics.ARCADE);
   game.input.onDown.add(goFullScreen, this);
+	game.input.pointer1.isDown(goFullScreen, this);
 }
