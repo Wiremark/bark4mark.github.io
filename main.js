@@ -17,5 +17,5 @@ function onCreate(){
   text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
 
   game.physics.startSystem(Phaser.Physics.ARCADE);
-  goFullScreen();
+  game.input.onDown.add(goFullScreen, this);
 }
