@@ -3,10 +3,8 @@ var width = 800, height = 600,
   style = { font: "bold 32px Arial", fill: "#000", boundsAlignH: "center", boundsAlignV: "middle" };
 
 function goFullScreen(){
-  console.log('fullscreen');
-	game.scale.pageAlignHorizontally = true;
-	game.scale.pageAlignVertically = true;
-	game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+  game.scale.startFullScreen(false);
+	game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 }
 
 function onPreload(){
