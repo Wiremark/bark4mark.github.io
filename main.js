@@ -1,22 +1,13 @@
-var width = 800, height = 600, 
-  game = new Phaser.Game(height,width,Phaser.AUTO,"game",{preload:onPreload, create:onCreate}), 
-  style = { font: "bold 32px Arial", fill: "#000", boundsAlignH: "center", boundsAlignV: "middle" };
+var intro, width = 800, height = 600, game = new Phaser.Game(width, height, Phaser.AUTO, 'game', { preload: preload, create: create});
 
-function goFullScreen(){
-  game.scale.startFullScreen(false);
-	game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+function preload() {
+  this.load.image('progress', 'assets/images/progress-pixel.png');
+  intro = this.load.image('intro', 'assets/images/intro.png');
+  this.load.script('startScreen',  'states/start.js');
 }
 
-function onPreload(){
-  console.log('preload');
-}
-
-function onCreate(){
-  game.stage.backgroundColor = "#ffffff";
-  var text = game.add.text(0, 0, "start", style);
-  text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
-
-  game.physics.startSystem(Phaser.Physics.ARCADE);
-  game.input.onDown.add(goFullScreen, this);
-	game.input.pointer1.isDown(goFullScreen, this);
+function create() {
+  this.stage.backgroundColor = "#bdbcba";
+  this.state.add('startScreen', startScreen);
+  this.state.start('startScreen');
 }
